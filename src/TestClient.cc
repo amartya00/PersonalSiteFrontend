@@ -10,30 +10,27 @@
 using namespace folly;
 using namespace personalsite::frontend;
 
-void testClient() {
+void testClient (const std::string& token) {
     EventBase eb;
     uint16_t port = 9090;
-    auto client = std::make_unique<PersonalSiteFrontendAsyncClient>(
-                apache::thrift::HeaderClientChannel::newChannel(
-                    apache::thrift::async::TAsyncSocket::newSocket(&eb, {"127.0.0.1", port})));
+    auto client = std::make_unique<PersonalSiteFrontendAsyncClient> (apache::thrift::HeaderClientChannel::newChannel (apache::thrift::async::TAsyncSocket::newSocket (&eb, { "127.0.0.1", port })));
     GetUidFromTokenRequest request;
-    request.set_token("test_token");
+    request.set_token (token);
     GetUidFromTokenResponse response;
-    client->sync_getUidFromToken(response, request);
-    std::cout << response.get_uid() << "\n";
+    client->sync_getUidFromToken (response, request);
+    std::cout << "UID: " << response.get_uid () << "\n";
+    std::cout << "Name: " << response.get_name () << "\n";
+    std::cout << "Password: " << response.get_pwd () << "\n";
 }
 
-void printStuff() {
-    std::cout << "Hello\n";
-}
-
-int main(int argc, char *argv[]) {
-    folly::init(&argc, &argv, true);
-    std::thread threads[100];
-    for (auto &t : threads) {
-        t = std::thread(testClient);
+int main (int argc, char* argv[]) {
+    folly::init (&argc, &argv, true);
+    std::string token (argv[1]);
+    std::thread threads[1];
+    for (auto& t : threads) {
+        t = std::thread (testClient, token);
     }
-    for (auto &t : threads) {
-        t.join();
+    for (auto& t : threads) {
+        t.join ();
     }
 }

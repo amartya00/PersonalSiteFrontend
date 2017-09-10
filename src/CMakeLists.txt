@@ -30,6 +30,10 @@ target_link_libraries(
     thriftprotocol
     zstd
     crypto
+    aws-cpp-sdk-core
+    aws-cpp-sdk-dynamodb
+    jsoncpp
+    curl
     )
 
 target_link_libraries(

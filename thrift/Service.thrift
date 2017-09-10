@@ -5,7 +5,9 @@ struct GetUidFromTokenRequest {
 }
 
 struct GetUidFromTokenResponse {
-    1: i64 uid;
+    1: string uid;
+    2: string pwd;
+    3: string name;
 }
 
 service PersonalSiteFrontend {

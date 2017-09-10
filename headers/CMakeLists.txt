@@ -9,4 +9,6 @@ add_custom_target(HeadersDummy
     "TestClient.h"
     "Auth.h"
     "Frontend.h"
-    "Utils.h")
+    "Utils.h"
+    "Exceptions.h")
+

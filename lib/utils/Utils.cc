@@ -15,3 +15,23 @@ void personalsite::utils::initAwsLogging(std::string executable, std::string pre
 void personalsite::utils::shutDownLogs() {
     Aws::Utils::Logging::ShutdownAWSLogging();
 }
+
+Aws::String personalsite::utils::toAwsString(const std::string& input) {
+    Aws::String retval(input.c_str());
+    return retval;
+}
+
+std::string personalsite::utils::toStdString(const Aws::String& input) {
+    std::string retval(input.c_str());
+    return retval;
+}
+
+void personalsite::utils::initAws() {
+    Aws::SDKOptions options;
+    Aws::InitAPI(options);
+}
+
+void personalsite::utils::shutDownAws() {
+    Aws::SDKOptions options;
+    Aws::ShutdownAPI(options);
+}
