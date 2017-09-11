@@ -1,4 +1,4 @@
-namespace cpp2 personalsite.frontend
+namespace cpp2 Sigsegv.Personalsite
 
 struct GetUidFromTokenRequest {
     1: string token;
@@ -10,6 +10,6 @@ struct GetUidFromTokenResponse {
     3: string name;
 }
 
-service PersonalSiteFrontend {
+service Frontend {
     GetUidFromTokenResponse getUidFromToken(1: GetUidFromTokenRequest request);
 }

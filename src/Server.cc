@@ -8,12 +8,14 @@
 #include "Service.h"
 #include "Utils.h"
 
+using namespace Sigsegv::Personalsite;
+
 int main (int argc, char* argv[]) {
     folly::init (&argc, &argv, true);
-    personalsite::utils::initAws ();
+    Sigsegv::Personalsite::Utils::initAws ();
 
     // Set up logging
-    personalsite::utils::initAwsLogging ("PersonalSiteServer", "/var/log/PersonalSite_aws_sdk_");
+    Sigsegv::Personalsite::Utils::initAwsLogging ("PersonalSiteServer", "/var/log/PersonalSite_aws_sdk_");
     google::SetLogDestination (0, "/var/log/PersonalSite.log");
     google::SetLogDestination (google::WARNING, "");
     // FLAGS_logtostderr = 0; // Meant as an override
@@ -23,11 +25,11 @@ int main (int argc, char* argv[]) {
     std::ifstream authIfs (authConfig, std::ifstream::binary);
 
     // Initialize server
-    std::shared_ptr<apache::thrift::ServerInterface> s = std::make_shared<PersonalSiteFrontend> (authIfs);
+    std::shared_ptr<apache::thrift::ServerInterface> s = std::make_shared<Sigsegv::Personalsite::Frontend> (authIfs);
     auto server = folly::make_unique<apache::thrift::ThriftServer> ();
     server->setInterface (s);
     server->setPort (9090);
     server->serve ();
 
-    personalsite::utils::shutDownAws ();
+    Sigsegv::Personalsite::Utils::shutDownAws ();
 }

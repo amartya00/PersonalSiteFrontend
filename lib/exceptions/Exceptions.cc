@@ -1,26 +1,26 @@
 #include "Exceptions.h"
 
-void personalsite::exceptions::ServiceException::operator =(const personalsite::exceptions::ServiceException& other) {
+void Sigsegv::Personalsite::Exceptions::ServiceException::operator =(const Sigsegv::Personalsite::Exceptions::ServiceException& other) {
     this->message = other.message;
     this->errorCode = other.errorCode;
 }
 
-const char* personalsite::exceptions::ServiceException::what() const noexcept {
+const char* Sigsegv::Personalsite::Exceptions::ServiceException::what() const noexcept {
     return message.c_str();
 }
 
-void personalsite::exceptions::ServiceException::setMessage(const std::string& message) {
+void Sigsegv::Personalsite::Exceptions::ServiceException::setMessage(const std::string& message) {
     this->message = message;
 }
 
-void personalsite::exceptions::ServiceException::setErrorCode(const unsigned int errorCode) {
+void Sigsegv::Personalsite::Exceptions::ServiceException::setErrorCode(const Sigsegv::Personalsite::Exceptions::ExceptionType errorCode) {
     this->errorCode= errorCode;
 }
 
-std::string personalsite::exceptions::ServiceException::getMessage() const {
+std::string Sigsegv::Personalsite::Exceptions::ServiceException::getMessage() const {
     return message;
 }
 
-unsigned int personalsite::exceptions::ServiceException::getErrorCode() const {
+Sigsegv::Personalsite::Exceptions::ExceptionType Sigsegv::Personalsite::Exceptions::ServiceException::getErrorCode() const {
     return errorCode;
 }

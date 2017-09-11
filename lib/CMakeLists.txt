@@ -13,11 +13,20 @@ file(GLOB GENERATED "${GEN_CPP_2}/*.cpp")
 
 add_library(ServerLib SHARED
     "Service.cc"
-    "auth/getUidFromToken.cc"
+
     "auth/AuthUserItem.cc"
     "auth/Auth.cc"
+    "auth/writeCallback.cc"
+    "auth/getInfoFromOAuth.cc"
+    "auth/checkIfUserExists.cc"
+    "auth/getUserInfo.cc"
+    "auth/authnticateUser.cc"
+    "auth/writeUserEntry.cc"
+
     "utils/Utils.cc"
+
     "exceptions/Exceptions.cc"
+
     ${GENERATED}
     )
 

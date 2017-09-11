@@ -1,4 +1,4 @@
-#include "PersonalSiteFrontend.h"
+#include "Frontend.h"
 
 #include "Auth.h"
 #include "Exceptions.h"
@@ -8,25 +8,29 @@
 #include <iostream>
 #include <string>
 
-using namespace personalsite::frontend;
+using namespace Sigsegv::Personalsite;
 
-personalsite::frontend::PersonalSiteFrontend::PersonalSiteFrontend (std::ifstream& authConfig) {
-    authService = std::make_unique<personalsite::Auth> (authConfig);
+Sigsegv::Personalsite::Frontend::Frontend (std::ifstream& authConfig) {
+    authService = std::make_unique<Sigsegv::Personalsite::Auth::Service> (authConfig);
 }
 
-personalsite::frontend::PersonalSiteFrontend::~PersonalSiteFrontend () {
+Sigsegv::Personalsite::Frontend::~Frontend () {
 }
 
-void personalsite::frontend::PersonalSiteFrontend::getUidFromToken (GetUidFromTokenResponse& response, std::unique_ptr<GetUidFromTokenRequest> request) {
+void Sigsegv::Personalsite::Frontend::getUidFromToken (GetUidFromTokenResponse& response, std::unique_ptr<GetUidFromTokenRequest> request) {
     LOG (INFO) << "getUidFromToken called\n";
-    personalsite::AuthUserItem retval;
+    Sigsegv::Personalsite::Auth::UserItem retval;
 
     try {
         retval = authService->getUserInfo (request->get_token ());
-    } catch (const personalsite::exceptions::ServiceException& e) {
+    } catch (const Sigsegv::Personalsite::Exceptions::ServiceException& e) {
         LOG (ERROR) << e.getMessage ();
         return;
+    } catch (const std::exception& e) {
+        LOG (ERROR) << e.what ();
+        return;
     }
+
     response.set_uid (retval.getUid ());
     response.set_name (retval.getName ());
     response.set_pwd (retval.getPwd ());

@@ -4,16 +4,17 @@
 #include <aws/core/Aws.h>
 #include <string>
 
-namespace personalsite {
-    namespace utils {
-        void initAws ();
-        void initAwsLogging (std::string executable, std::string prefix);
-        void shutDownLogs ();
-        void shutDownAws ();
+namespace Sigsegv {
+    namespace Personalsite {
+        namespace Utils {
+            void initAws ();
+            void initAwsLogging (std::string executable, std::string prefix);
+            void shutDownLogs ();
+            void shutDownAws ();
 
-        Aws::String toAwsString (const std::string&);
-        std::string toStdString (const Aws::String&);
+            Aws::String toAwsString (const std::string&);
+            std::string toStdString (const Aws::String&);
+        }
     }
 }
-
 #endif

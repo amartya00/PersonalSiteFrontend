@@ -5,15 +5,15 @@
 #include <iostream>
 #include <thread>
 
-#include "PersonalSiteFrontend.h"
+#include "Frontend.h"
 
 using namespace folly;
-using namespace personalsite::frontend;
+using namespace Sigsegv::Personalsite;
 
 void testClient (const std::string& token) {
     EventBase eb;
     uint16_t port = 9090;
-    auto client = std::make_unique<PersonalSiteFrontendAsyncClient> (apache::thrift::HeaderClientChannel::newChannel (apache::thrift::async::TAsyncSocket::newSocket (&eb, { "127.0.0.1", port })));
+    auto client = std::make_unique<FrontendAsyncClient> (apache::thrift::HeaderClientChannel::newChannel (apache::thrift::async::TAsyncSocket::newSocket (&eb, { "127.0.0.1", port })));
     GetUidFromTokenRequest request;
     request.set_token (token);
     GetUidFromTokenResponse response;

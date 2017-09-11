@@ -7,19 +7,19 @@
 #include <fstream>
 
 #include "Auth.h"
-#include "PersonalSiteFrontend.h"
+#include "Frontend.h"
 
-using namespace personalsite::frontend;
+using namespace Sigsegv::Personalsite;
 
-namespace personalsite {
-    namespace frontend {
-        class PersonalSiteFrontend : public PersonalSiteFrontendSvIf {
+namespace Sigsegv {
+    namespace Personalsite {
+        class Frontend : public FrontendSvIf {
             private:
-            std::unique_ptr<personalsite::Auth> authService;
+            std::unique_ptr<Sigsegv::Personalsite::Auth::Service> authService;
 
             public:
-            PersonalSiteFrontend (std::ifstream& authConfig);
-            virtual ~PersonalSiteFrontend ();
+            Frontend (std::ifstream& authConfig);
+            virtual ~Frontend ();
             void getUidFromToken (GetUidFromTokenResponse& response, std::unique_ptr<GetUidFromTokenRequest> request);
         };
     }
