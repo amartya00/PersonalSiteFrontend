@@ -6,10 +6,18 @@
 
 #include <json/json.h>
 
-Sigsegv::Personalsite::Auth::Service::Service(std::ifstream& configInputStream) {
+Sigsegv::Personalsite::Auth::Service::Service(std::ifstream& configInputStream, std::ifstream& whitelistInputStream) {
     Json::Value jsonObj;
     configInputStream >> jsonObj;
     ddbtable = jsonObj["DDBTableName"].asString();
+    whiteListingEnabled = jsonObj["WhitelistingEnabled"].asBool();
+
+    Json::Value whitelistJson;
+    whitelistInputStream >> whitelistJson;
+    for (auto acct : whitelistJson["WhitelistedAccounts"]) {
+        whitelistedIds.push_back(acct.asString());
+    }
+
     if (ddbtable.compare("") == 0) {
         Sigsegv::Personalsite::Exceptions::ServiceException exc;
         exc.setErrorCode(Sigsegv::Personalsite::Exceptions::ExceptionType::INVALID_CONFIG);

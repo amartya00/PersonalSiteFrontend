@@ -1,0 +1,28 @@
+#!/bin/bash
+
+command=$1
+
+get_script_path() {
+    temp=`pwd`
+    cd `dirname $0`
+    script_path=`pwd`
+    cd $temp
+    echo "$script_path"
+}
+
+root=`get_script_path`
+
+if [ $command == "start" ]; then
+    LD_LIBRARY_PATH=$root/../lib/ $root/Server $root/../configs/AuthConfig.json $root/../configs/Whitelist.json &
+elif [ $command == "stop" ]; then
+    kill -9 `echo /opt/PersonalSite/.pid`
+    rm -rf /opt/PersonalSite/.pid
+elif [ $command == "status" ]; then
+    if [ -f "/opt/PersonalSite/.pid" ]; then
+        echo "Server running as pid: `cat /opt/PersonalSite/.pid`"
+    else
+        echo "Server not running."
+    fi
+else
+    echo "Incorrect command. valid commands are [start, stop, status]"
+fi

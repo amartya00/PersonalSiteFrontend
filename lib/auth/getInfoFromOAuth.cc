@@ -11,6 +11,7 @@
 Sigsegv::Personalsite::Auth::UserItem Sigsegv::Personalsite::Auth::Service::getInfoFromOAuth(const std::string &accessToken) const {
     std::string url = "https://www.googleapis.com/plus/v1/people/me?access_token=" + accessToken;
     Sigsegv::Personalsite::Exceptions::ServiceException exc;
+    Sigsegv::Personalsite::Exceptions::ClientException cexc;
     std::string returned;
 
     // Set up and make calls with curl
@@ -65,15 +66,15 @@ Sigsegv::Personalsite::Auth::UserItem Sigsegv::Personalsite::Auth::Service::getI
 
     // Check for errors
     if (responseJson["error"].size() > 0) {
-        if (responseJson["error"]["code"].asInt() == 401) {
-            exc.setErrorCode(Sigsegv::Personalsite::Exceptions::ExceptionType::INVALID_TOKEN);
-            exc.setMessage("(401) " + responseJson["error"]["message"].asString());
-            throw exc;
-        }
         if (responseJson["error"]["code"].asInt() == 403) {
-            exc.setErrorCode(Sigsegv::Personalsite::Exceptions::ExceptionType::EXPIRED_TOKEN);
-            exc.setMessage("(403) " + responseJson["error"]["message"].asString());
-            throw exc;
+            cexc.setErrorCode(Sigsegv::Personalsite::Exceptions::ExceptionType::INVALID_TOKEN);
+            cexc.setMessage("(403) " + responseJson["error"]["message"].asString());
+            throw cexc;
+        }
+        if (responseJson["error"]["code"].asInt() == 401) {
+            cexc.setErrorCode(Sigsegv::Personalsite::Exceptions::ExceptionType::EXPIRED_TOKEN);
+            cexc.setMessage("(401) " + responseJson["error"]["message"].asString());
+            throw cexc;
         }
     }
     if (responseJson["name"]["givenName"].asString().compare("") == 0 ||

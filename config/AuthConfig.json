@@ -1,3 +1,4 @@
 {
-    "DDBTableName": "PersonalSite_c1"
+    "DDBTableName": "PersonalSite_c1",
+    "WhitelistingEnabled": true
 }

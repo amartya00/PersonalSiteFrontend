@@ -27,7 +27,7 @@ add_library(ServerLib SHARED
 
     "exceptions/Exceptions.cc"
 
-    ${GENERATED}
+    $<TARGET_OBJECTS:GeneratedObjects>
     )
 
 target_link_libraries(
@@ -47,6 +47,4 @@ target_link_libraries(
     jsoncpp
     curl)
 
-add_dependencies(ServerLib BuildServiceDefs)
-
-
+install(TARGETS ServerLib DESTINATION lib)

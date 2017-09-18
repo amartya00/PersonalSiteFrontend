@@ -61,9 +61,11 @@ namespace Sigsegv {
                 private:
                 std::string ddbtable;
                 Aws::DynamoDB::DynamoDBClient ddbClient;
+                bool whiteListingEnabled;
+                std::vector<std::string> whitelistedIds;
 
                 public:
-                Service (std::ifstream& configInputStream);
+                Service (std::ifstream& configInputStream, std::ifstream& whitelistInputStream);
                 virtual ~Service () {
                 }
 

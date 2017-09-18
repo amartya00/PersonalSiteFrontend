@@ -18,7 +18,7 @@ namespace Sigsegv {
             std::unique_ptr<Sigsegv::Personalsite::Auth::Service> authService;
 
             public:
-            Frontend (std::ifstream& authConfig);
+            Frontend (std::ifstream& authConfig, std::ifstream& whitelist);
             virtual ~Frontend ();
             void getUidFromToken (GetUidFromTokenResponse& response, std::unique_ptr<GetUidFromTokenRequest> request);
         };

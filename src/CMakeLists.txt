@@ -1,6 +1,8 @@
 # CMakeLists file for subdir: src
 cmake_minimum_required(VERSION 3.0)
 
+add_compile_options(-fPIC)
+
 file(GLOB GENERATED "${GEN_CPP_2}/*.cpp")
 
 include_directories(
@@ -15,7 +17,8 @@ add_executable(Server
 
 add_executable(TestClient
     "TestClient.cc"
-    ${GENERATED})
+    $<TARGET_OBJECTS:GeneratedObjects>
+    )
 
 target_link_libraries(
     Server
@@ -49,3 +52,5 @@ target_link_libraries(
     zstd
     crypto
     )
+
+install(TARGETS Server TestClient DESTINATION bin)
