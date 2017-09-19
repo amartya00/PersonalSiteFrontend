@@ -24,7 +24,7 @@ add_subdirectory(thrift)
 add_subdirectory(lib)
 add_subdirectory(config)
 add_subdirectory(scripts)
-add_subdirectory(snap)
+add_subdirectory(snappyyml)
 
 add_custom_target(Dummy
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake)

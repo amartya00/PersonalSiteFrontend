@@ -15,7 +15,7 @@ root=`get_script_path`
 if [ $command == "start" ]; then
     LD_LIBRARY_PATH=$root/../lib/ $root/Server $root/../configs/AuthConfig.json $root/../configs/Whitelist.json &
 elif [ $command == "stop" ]; then
-    kill -9 `echo /opt/PersonalSite/.pid`
+    kill -9 `cat /opt/PersonalSite/.pid`
     rm -rf /opt/PersonalSite/.pid
 elif [ $command == "status" ]; then
     if [ -f "/opt/PersonalSite/.pid" ]; then
