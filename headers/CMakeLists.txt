@@ -7,7 +7,6 @@ add_custom_target(HeadersDummy
     SOURCES
     "Service.h"
     "TestClient.h"
-    "Auth.h"
     "Utils.h"
     "Exceptions.h")
 

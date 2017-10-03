@@ -8,6 +8,7 @@ enable_testing()
 
 set(SERVICE_FILE  ${CMAKE_CURRENT_SOURCE_DIR}/thrift/Service.thrift)
 set(HEADERS       ${CMAKE_CURRENT_SOURCE_DIR}/headers)
+set(AUTH_HEADERS  ${CMAKE_CURRENT_SOURCE_DIR}/auth/headers)
 set(LIB           ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(SRC           ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(SCRIPTS       ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
@@ -25,6 +26,7 @@ add_subdirectory(lib)
 add_subdirectory(config)
 add_subdirectory(scripts)
 add_subdirectory(snappyyml)
+add_subdirectory(auth)
 
 add_custom_target(Dummy
     SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake)
