@@ -9,3 +9,7 @@ add_library(
     GeneratedObjects
     OBJECT
     ${GENERATED})
+
+add_custom_target(ThriftFile
+    SOURCES
+    ${SERVICE_FILE})

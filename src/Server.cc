@@ -9,8 +9,13 @@
 #include <dirent.h>
 #include <unistd.h>
 
+#include <aws/core/utils/Outcome.h>
+#include <aws/dynamodb/DynamoDBClient.h>
+#include <aws/dynamodb/model/QueryRequest.h>
+
 #include "Service.h"
 #include "Utils.h"
+#include "Auth.h"
 
 using namespace Sigsegv::Personalsite;
 
@@ -36,8 +41,8 @@ bool savepid() {
 }
 
 int main (int argc, char* argv[]) {
-    if (argc < 3) {
-        std::cerr << "Please provide path to auth config file and the whitelist file.\n";
+    if (argc < 2) {
+        std::cerr << "Please provide path to auth config file.\n";
         return 1;
     }
     folly::init (&argc, &argv, true);
@@ -57,12 +62,13 @@ int main (int argc, char* argv[]) {
 
     // Open AuthConfig file
     std::string authConfig (argv[1]);
-    std::string whitelist (argv[2]);
     std::ifstream authIfs (authConfig, std::ifstream::binary);
-    std::ifstream whitelistIfs (whitelist, std::ifstream::binary);
 
     // Initialize server
-    std::shared_ptr<apache::thrift::ServerInterface> s = std::make_shared<Sigsegv::Personalsite::Frontend> (authIfs, whitelistIfs);
+    std::shared_ptr<Aws::DynamoDB::DynamoDBClient> ddbClient = std::make_shared<Aws::DynamoDB::DynamoDBClient>();
+    std::shared_ptr<Sigsegv::Auth::GapiWrapper> gapiClient = std::make_shared<Sigsegv::Auth::GapiWrapper> ();
+    std::shared_ptr<apache::thrift::ServerInterface> s = std::make_shared<Sigsegv::Personalsite::Frontend> (authIfs, ddbClient, gapiClient);
+
     auto server = folly::make_unique<apache::thrift::ThriftServer> ();
     server->setInterface (s);
     server->setPort (9090);

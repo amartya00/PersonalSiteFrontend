@@ -9,17 +9,9 @@ namespace Sigsegv {
             enum class ExceptionType {
                 UNKNOWN_EXCEPTION,
                 INVALID_CONFIG,
-                CURL_INIT_ERROR,
-                CURL_SETOPT_ERROR_CURLOPT_URL,
-                CURL_SETOPT_ERROR_CURLOPT_FOLLOWLOCATION,
-                CURL_SETOPT_ERROR_CURLOPT_WRITEFUNCTION,
-                CURL_SETOPT_ERROR_CURLOPT_WRITEDATA,
                 INVALID_TOKEN,
                 EXPIRED_TOKEN,
-                DDB_PUT_ITEM_FAIL,
-                DDB_QUERY_FAIL,
-                OAUTH_FAIL,
-                CURL_PERFORM_ERROR
+                AUTH_EXCEPTION
             };
 
             class ServiceException : public std::exception {

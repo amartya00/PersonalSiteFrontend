@@ -5,6 +5,7 @@ add_compile_options(-fPIC)
 include_directories(
     ${GEN_CPP_2}
     ${HEADERS}
+    ${AUTH_HEADERS}
     /usr/local/lib/
     /home/amartya/Projects/HelloWorldService/fbthrift/
     )
@@ -13,15 +14,6 @@ file(GLOB GENERATED "${GEN_CPP_2}/*.cpp")
 
 add_library(ServerLib SHARED
     "Service.cc"
-
-    "auth/AuthUserItem.cc"
-    "auth/Auth.cc"
-    "auth/writeCallback.cc"
-    "auth/getInfoFromOAuth.cc"
-    "auth/checkIfUserExists.cc"
-    "auth/getUserInfo.cc"
-    "auth/authnticateUser.cc"
-    "auth/writeUserEntry.cc"
 
     "utils/Utils.cc"
 
@@ -32,6 +24,7 @@ add_library(ServerLib SHARED
 
 target_link_libraries(
     ServerLib
+    auth
     boost_system
     pthread
     glog

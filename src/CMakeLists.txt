@@ -8,6 +8,7 @@ file(GLOB GENERATED "${GEN_CPP_2}/*.cpp")
 include_directories(
     ${GEN_CPP_2}
     ${HEADERS}
+    ${AUTH_HEADERS}
     /usr/local/lib/
     /home/amartya/Projects/HelloWorldService/fbthrift/
     )
