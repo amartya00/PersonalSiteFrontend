@@ -118,3 +118,11 @@ parts:
   zstd:
     plugin: cmake
     source: https://s3.amazonaws.com/amartya00-service-artifacts/zstd.tar
+
+  auth:
+    plugin: cmake
+    source: https://s3.amazonaws.com/amartya00-service-artifacts/auth.tar
+
+  gapiwrapper:
+    plugin: cmake
+    source: https://s3.amazonaws.com/amartya00-service-artifacts/gapiwrapper.tar

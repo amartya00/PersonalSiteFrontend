@@ -25,6 +25,7 @@ add_library(ServerLib SHARED
 target_link_libraries(
     ServerLib
     auth
+    gapiwrapper
     boost_system
     pthread
     glog
