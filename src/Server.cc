@@ -1,6 +1,8 @@
 #include <folly/init/Init.h>
 #include <glog/logging.h>
 #include <thrift/lib/cpp2/server/ThriftServer.h>
+#include <thrift/lib/cpp/transport/TSSLServerSocket.h>
+#include <thrift/lib/cpp/transport/TTransport.h>
 
 #include <fstream>
 #include <string>
@@ -41,8 +43,8 @@ bool savepid() {
 }
 
 int main (int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cerr << "Please provide path to auth config file.\n";
+    if (argc < 4) {
+        std::cerr << "Please provide 1. path to auth config file, 2. Certificate, 3. Private key.\n";
         return 1;
     }
     folly::init (&argc, &argv, true);
@@ -64,6 +66,16 @@ int main (int argc, char* argv[]) {
     std::string authConfig (argv[1]);
     std::ifstream authIfs (authConfig, std::ifstream::binary);
 
+    // Cert and pvt key
+    std::string cert (argv[2]);
+    std::string keypair (argv[3]);
+    auto sslConfig = std::make_shared<wangle::SSLContextConfig>();
+    sslConfig->sessionContext = "Personalsite";
+    sslConfig->sessionCacheEnabled = false;
+    sslConfig->isDefault = true;
+    sslConfig->setNextProtocols({"h2"});
+    sslConfig->setCertificate(cert, keypair, "");
+
     // Initialize server
     std::shared_ptr<Aws::DynamoDB::DynamoDBClient> ddbClient = std::make_shared<Aws::DynamoDB::DynamoDBClient>();
     std::shared_ptr<Sigsegv::Auth::GapiWrapper> gapiClient = std::make_shared<Sigsegv::Auth::GapiWrapper> ();
@@ -72,6 +84,7 @@ int main (int argc, char* argv[]) {
     auto server = folly::make_unique<apache::thrift::ThriftServer> ();
     server->setInterface (s);
     server->setPort (9090);
+    server->setSSLConfig(sslConfig);
     server->serve ();
 
     Sigsegv::Personalsite::Utils::shutDownAws ();

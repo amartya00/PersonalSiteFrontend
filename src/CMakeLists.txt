@@ -52,6 +52,7 @@ target_link_libraries(
     thriftprotocol
     zstd
     crypto
+    ssl
     )
 
 install(TARGETS Server TestClient DESTINATION bin)
