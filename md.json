@@ -1,0 +1,141 @@
+{
+    "Dependencies": [
+        {
+            "Content": "libunwind.so.8", 
+            "Version": "0.0", 
+            "Package": "unwind"
+        }, 
+        {
+            "Content": "libstdc++.so.6", 
+            "Version": "0.0", 
+            "Package": "stdc++"
+        }, 
+        {
+            "Content": "libzstd.so.1", 
+            "Version": "0.0", 
+            "Package": "zstd"
+        }, 
+        {
+            "Content": "libboost_program_options.so.1.62.0", 
+            "Version": "0.0", 
+            "Package": "boostprogramoptions"
+        }, 
+        {
+            "Content": "libjsoncpp.so.19", 
+            "Version": "0.0", 
+            "Package": "jsoncpp"
+        }, 
+        {
+            "Content": "libicui18n.so.57", 
+            "Version": "0.0", 
+            "Package": "icui18n"
+        }, 
+        {
+            "Content": "libthriftprotocol.so.32", 
+            "Version": "0.0", 
+            "Package": "thriftprotocol"
+        }, 
+        {
+            "Content": "libgapiwrapper.so", 
+            "Version": "0.0", 
+            "Package": "gapiwrapper"
+        }, 
+        {
+            "Content": "libdouble-conversion.so.1", 
+            "Version": "0.0", 
+            "Package": "double-conversion"
+        }, 
+        {
+            "Content": "libevent-2.1.so.6", 
+            "Version": "0.0", 
+            "Package": "event-2"
+        }, 
+        {
+            "Content": "libfolly.so.57", 
+            "Version": "0.0", 
+            "Package": "folly"
+        }, 
+        {
+            "Content": "libboost_thread.so.1.62.0", 
+            "Version": "0.0", 
+            "Package": "boostthread"
+        }, 
+        {
+            "Content": "libboost_context.so.1.62.0", 
+            "Version": "0.0", 
+            "Package": "boostcontext"
+        }, 
+        {
+            "Content": "libicudata.so.57", 
+            "Version": "0.0", 
+            "Package": "icudata"
+        }, 
+        {
+            "Content": "libboost_system.so.1.62.0", 
+            "Version": "0.0", 
+            "Package": "boostsystem"
+        }, 
+        {
+            "Content": "libauth.so", 
+            "Version": "0.0", 
+            "Package": "auth"
+        }, 
+        {
+            "Content": "libicuuc.so.57", 
+            "Version": "0.0", 
+            "Package": "icuuc"
+        }, 
+        {
+            "Content": "libsnappy.so.1", 
+            "Version": "0.0", 
+            "Package": "snappy"
+        }, 
+        {
+            "Content": "libthriftfrozen2.so.32", 
+            "Version": "0.0", 
+            "Package": "thriftfrozen2"
+        }, 
+        {
+            "Content": "libthriftcpp2.so.32", 
+            "Version": "0.0", 
+            "Package": "thriftcpp2"
+        }, 
+        {
+            "Content": "libboost_regex.so.1.62.0", 
+            "Version": "0.0", 
+            "Package": "boostregex"
+        }, 
+        {
+            "Content": "libgflags.so.2.2", 
+            "Version": "0.0", 
+            "Package": "gflags"
+        }, 
+        {
+            "Content": "libaws-cpp-sdk-dynamodb.so", 
+            "Version": "0.0", 
+            "Package": "aws-cpp-sdk-dynamodb"
+        }, 
+        {
+            "Content": "libthrift.so.32", 
+            "Version": "0.0", 
+            "Package": "thrift"
+        }, 
+        {
+            "Content": "libglog.so.0", 
+            "Version": "0.0", 
+            "Package": "glog"
+        }, 
+        {
+            "Content": "libboost_filesystem.so.1.62.0", 
+            "Version": "0.0", 
+            "Package": "boostfilesystem"
+        }, 
+        {
+            "Content": "libaws-cpp-sdk-core.so", 
+            "Version": "0.0", 
+            "Package": "aws-cpp-sdk-core"
+        }
+    ],
+    "Version": "0.0", 
+    "Package": "personalsite"
+}

@@ -10,6 +10,8 @@ include_directories(
     /home/amartya/Projects/HelloWorldService/fbthrift/
     )
 
+link_directories(${LINK_FOLDER})
+
 file(GLOB GENERATED "${GEN_CPP_2}/*.cpp")
 
 add_library(ServerLib SHARED
@@ -22,23 +24,25 @@ add_library(ServerLib SHARED
     $<TARGET_OBJECTS:GeneratedObjects>
     )
 
+
+
 target_link_libraries(
     ServerLib
-    auth
-    gapiwrapper
-    boost_system
-    pthread
-    glog
-    folly
-    thrift
-    thriftcpp2
-    gflags
-    thriftprotocol
-    zstd
-    crypto
-    aws-cpp-sdk-core
-    aws-cpp-sdk-dynamodb
-    jsoncpp
-    curl)
+    ${AUTH}
+    ${GAPI}
+    ${BOOST_SYSTEM}
+    ${PTHREAD}
+    ${GLOG}
+    ${FOLLY}
+    ${THRIFT}
+    ${THRIFTCPP2}
+    ${GFLAGS}
+    ${THRIFTPROTOCOL}
+    ${ZSTD}
+    ${CRYPTO}
+    ${AWS_SDK_CORE}
+    ${DYNAMODB}
+    ${JSONCPP}
+    ${CURL})
 
 install(TARGETS ServerLib DESTINATION lib)

@@ -24,35 +24,35 @@ add_executable(TestClient
 target_link_libraries(
     Server
     ServerLib
-    boost_system
-    pthread
-    glog
-    folly
-    thrift
-    thriftcpp2
-    gflags
-    thriftprotocol
-    zstd
-    crypto
-    aws-cpp-sdk-core
-    aws-cpp-sdk-dynamodb
-    jsoncpp
-    curl
+    ${BOOST_SYSTEM}
+    ${PTHREAD}
+    ${GLOG}
+    ${FOLLY}
+    ${THRIFT}
+    ${THRIFTCPP2}
+    ${GFLAGS}
+    ${THRIFTPROTOCOL}
+    ${ZSTD}
+    ${CRYPTO}
+    ${AWS_SDK_CORE}
+    ${DYNAMODB}
+    ${JSONCPP}
+    ${CURL}
     )
 
 target_link_libraries(
     TestClient
-    boost_system
-    pthread
-    glog
-    folly
-    thrift
-    thriftcpp2
-    gflags
-    thriftprotocol
-    zstd
-    crypto
-    ssl
+    ${BOOST_SYSTEM}
+    ${PTHREAD}
+    ${GLOG}
+    ${FOLLY}
+    ${THRIFT}
+    ${THRIFTCPP2}
+    ${GFLAGS}
+    ${THRIFTPROTOCOL}
+    ${ZSTD}
+    ${CRYPTO}
+    ${SSL}
     )
 
 install(TARGETS Server TestClient DESTINATION bin)
