@@ -45,9 +45,9 @@ target_link_libraries(
     boost_system
     pthread
     glog
+    thriftcpp2
     folly
     thrift
-    thriftcpp2
     gflags
     thriftprotocol
     zstd

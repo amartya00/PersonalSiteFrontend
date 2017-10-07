@@ -1,6 +1,21 @@
 #!/bin/bash
 
-command=$1
+command=""
+cert=""
+pvt=""
+
+while getopts "d:c:p:" arg; do
+    case $arg in
+        c) cert=$OPTARG;;
+        p) pvt=$OPTARG;;
+        d) command=$OPTARG
+    esac
+done
+
+if [ -z "${command}" ]; then
+    echo "Command required. Usage: frontend-server -d <command> [-c <certfile>] [-p <pvtkey>]"
+    exit 1
+fi
 
 get_script_path() {
     temp=`pwd`
@@ -13,7 +28,11 @@ get_script_path() {
 root=`get_script_path`
 
 if [ $command == "start" ]; then
-    LD_LIBRARY_PATH=$root/../lib/ $root/Server $root/../configs/AuthConfig.json $root/../configs/Whitelist.json &
+    if [ -z "${cert}" ] || [ -z "${pvt}" ]; then
+        echo "Please provide cert and pvt key Usage: frontend-server -d <command> [-c <certfile>] [-p <pvtkey>]"
+        exit 1
+    fi
+    LD_LIBRARY_PATH=$root/../lib/ $root/Server $root/../configs/AuthConfig.json $cert $pvt&
 elif [ $command == "stop" ]; then
     kill -9 `cat /opt/PersonalSite/.pid`
     rm -rf /opt/PersonalSite/.pid

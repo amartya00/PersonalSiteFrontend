@@ -2,7 +2,6 @@
 #include <thrift/lib/cpp/async/TAsyncSocket.h>
 #include <thrift/lib/cpp/async/TAsyncSSLSocket.h>
 #include <thrift/lib/cpp2/async/HeaderClientChannel.h>
-//#include <thrift/lib/cpp2/async/HTTPClientChannel.h>
 
 #include <iostream>
 #include <thread>
@@ -30,6 +29,7 @@ void testClient (const std::string& ip, const std::string& token, const std::str
     transport.reset(sslSocket);
     auto channel = apache::thrift::HeaderClientChannel::newChannel(std::move(transport));
     auto client = std::make_unique<FrontendAsyncClient> (apache::thrift::HeaderClientChannel::newChannel (apache::thrift::async::TAsyncSocket::newSocket (&eb, { ip, port })));
+    //auto client = std::make_unique<FrontendAsyncClient> (std::move(channel));
 
     // Make the request
     GetUidFromTokenRequest request;
