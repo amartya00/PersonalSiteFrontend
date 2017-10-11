@@ -137,5 +137,23 @@
         }
     ],
     "Version": "0.0", 
-    "Package": "personalsite"
+    "Package": "personalsite",
+    "Snappy": {
+        "Name": "personalsite-frontend",
+        "Version": "0.0.1",
+        "Summary": "Personal site frontend server.",
+        "Description": "The server for personal site's frontend. Powered bt fbthrift and aws.",
+        "Confinement": "devmode",
+        "Grade": "devel",
+        "Apps": [
+            {
+                "Name": "frontend-server",
+                "Command": "frontend-server"
+            },
+            {
+                "Name": "test-client",
+                "Command": "TestClient"
+            }
+        ]
+    }
 }
