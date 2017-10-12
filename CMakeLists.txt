@@ -40,6 +40,8 @@ find_library(CURL           NAMES curl                 PATHS ${PACKAGE_CACHE}/li
 find_library(GAPI           NAMES gapiwrapper          PATHS ${PACKAGE_CACHE}/lib NO_DEFAULT_PATH NO_CMAKE_SYSTEM_PATH)
 find_library(GLOG           NAMES glog                 PATHS ${PACKAGE_CACHE}/lib NO_DEFAULT_PATH NO_CMAKE_SYSTEM_PATH)
 find_library(SSL            NAMES ssl                  PATHS ${PACKAGE_CACHE}/lib NO_DEFAULT_PATH NO_CMAKE_SYSTEM_PATH)
+find_library(PYTHON27       NAMES python2.7            PATHS ${PACKAGE_CACHE}/lib NO_DEFAULT_PATH NO_CMAKE_SYSTEM_PATH)
+find_library(BOOST_PYTHON   NAMES boost_python         PATHS ${PACKAGE_CACHE}/lib NO_DEFAULT_PATH NO_CMAKE_SYSTEM_PATH)
 
 find_library(AUTH           NAMES auth                 PATHS ${PACKAGE_CACHE}/lib)
 find_library(BOOST_SYSTEM   NAMES boost_system         PATHS ${PACKAGE_CACHE}/lib)
@@ -58,6 +60,8 @@ find_library(CURL           NAMES curl                 PATHS ${PACKAGE_CACHE}/li
 find_library(GAPI           NAMES gapiwrapper          PATHS ${PACKAGE_CACHE}/lib)
 find_library(GLOG           NAMES glog                 PATHS ${PACKAGE_CACHE}/lib)
 find_library(SSL            NAMES ssl                  PATHS ${PACKAGE_CACHE}/lib)
+find_library(PYTHON27       NAMES python2.7            PATHS ${PACKAGE_CACHE}/lib)
+find_library(BOOST_PYTHON   NAMES boost_python         PATHS ${PACKAGE_CACHE}/lib)
 
 message(STATUS "Using ${AUTH}")
 message(STATUS "Using ${BOOST_SYSTEM}")
@@ -76,6 +80,8 @@ message(STATUS "Using ${CURL}")
 message(STATUS "Using ${GAPI}")
 message(STATUS "Using ${GLOG}")
 message(STATUS "Using ${SSL}")
+message(STATUS "Using ${PYTHON27}")
+message(STATUS "Using ${BOOST_PYTHON}")
 
 # Subprojects
 add_subdirectory(src)
