@@ -149,10 +149,6 @@
             {
                 "Name": "frontend-server",
                 "Command": "frontend-server"
-            },
-            {
-                "Name": "test-client",
-                "Command": "TestClient"
             }
         ]
     }
