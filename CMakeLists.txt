@@ -97,9 +97,9 @@ add_custom_target(Dummy
 
 add_custom_target(
     Format
-    COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake" "${CMAKE_CURRENT_SOURCE_DIR}/headers" "h"
-    COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake" "${CMAKE_CURRENT_SOURCE_DIR}/lib" "cc"
-    COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake" "${CMAKE_CURRENT_SOURCE_DIR}/src" "cc")
+    COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake" "${CMAKE_CURRENT_SOURCE_DIR}/headers"
+    COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake" "${CMAKE_CURRENT_SOURCE_DIR}/lib"
+    COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_SOURCE_DIR}/FormatFiles.cmake" "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # install scripts and config files
 file(GLOB scripts "${SCRIPTS}/frontend-server")

@@ -12,8 +12,8 @@
 #include <aws/dynamodb/model/QueryRequest.h>
 
 #include "Auth.h"
-#include "Frontend.h"
 #include "DataStructures.h"
+#include "Frontend.h"
 
 using namespace Sigsegv::Personalsite;
 
@@ -27,15 +27,15 @@ namespace Sigsegv {
             std::unique_ptr<Sigsegv::Auth::Service> authService;
             std::string userTable;
 
-            Sigsegv::Personalsite::UserItem getUserItem(const std::string&);
-            void putUserItem(const Sigsegv::Personalsite::UserItem&);
+            Sigsegv::Personalsite::UserItem getUserItem (const std::string&);
+            void putUserItem (const Sigsegv::Personalsite::UserItem&);
 
             public:
             Frontend (std::ifstream& authConfig, const std::shared_ptr<Aws::DynamoDB::DynamoDBClient>& ddbClient, const std::shared_ptr<Sigsegv::Auth::GapiWrapper> gapiClient);
             virtual ~Frontend ();
             void getUidFromToken (GetUidFromTokenResponse& response, std::unique_ptr<GetUidFromTokenRequest> request);
-            void getUserInfo(GetUserInfoResponse& response, std::unique_ptr<GetUserInfoRequest> request);
-            void updateUserInfo(UpdateUserInfoResponse& response, std::unique_ptr<UpdateUserInfoRequest> request);
+            void getUserInfo (GetUserInfoResponse& response, std::unique_ptr<GetUserInfoRequest> request);
+            void updateUserInfo (UpdateUserInfoResponse& response, std::unique_ptr<UpdateUserInfoRequest> request);
         };
     }
 }

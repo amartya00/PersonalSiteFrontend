@@ -6,15 +6,7 @@
 namespace Sigsegv {
     namespace Personalsite {
         namespace Exceptions {
-            enum class ExceptionType {
-                UNKNOWN_EXCEPTION,
-                INVALID_CONFIG,
-                INVALID_TOKEN,
-                EXPIRED_TOKEN,
-                AUTH_EXCEPTION,
-                INVALID_INPUT,
-                INTERNAL_FAILURE
-            };
+            enum class ExceptionType { UNKNOWN_EXCEPTION, INVALID_CONFIG, INVALID_TOKEN, EXPIRED_TOKEN, AUTH_EXCEPTION, INVALID_INPUT, INTERNAL_FAILURE };
 
             class ServiceException : public std::exception {
                 private:
