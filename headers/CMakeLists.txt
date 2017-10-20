@@ -9,5 +9,7 @@ add_custom_target(HeadersDummy
     "Service.h"
     "TestClient.h"
     "Utils.h"
-    "PersonalSiteExceptions.h")
+    "PersonalSiteExceptions.h"
+    "DataStructures.h")
+
 

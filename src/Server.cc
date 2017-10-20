@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <cstdlib>
+#include <csignal>
 
 #include <aws/core/utils/Outcome.h>
 #include <aws/dynamodb/DynamoDBClient.h>
@@ -42,7 +44,17 @@ bool savepid() {
     return true;
 }
 
+void signalHandler(int signal) {
+    std::cout << "\n\nShutting down server ...\n\n";
+    LOG (INFO) << "Shutting down server\n";
+    Sigsegv::Personalsite::Utils::shutDownAws ();
+    exit(EXIT_SUCCESS);
+}
+
 int main (int argc, char* argv[]) {
+    std::signal(SIGINT, signalHandler);
+    std::signal(SIGKILL, signalHandler);
+    std::signal(SIGABRT, signalHandler);
     if (argc < 4) {
         std::cerr << "Please provide 1. path to auth config file, 2. Certificate, 3. Private key.\n";
         return 1;

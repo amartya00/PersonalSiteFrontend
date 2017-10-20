@@ -1,5 +1,6 @@
 {
     "WhitelistedServicesTable": "WhitelistedServicesTable_c1",
     "WhitelistedUsersTable": "WhitelistedUsersTable_c1",
-    "AuthTable": "AuthTable_c1"
+    "AuthTable": "AuthTable_c1",
+    "UserTable": "UserTable_c1"
 }

@@ -57,6 +57,7 @@ target_link_libraries(
     ${SSL}
     ${BOOST_PYTHON}
     ${PYTHON27}
+    ${JSONCPP}
     )
 
 install(TARGETS Server Client DESTINATION bin)

@@ -11,7 +11,9 @@ namespace Sigsegv {
                 INVALID_CONFIG,
                 INVALID_TOKEN,
                 EXPIRED_TOKEN,
-                AUTH_EXCEPTION
+                AUTH_EXCEPTION,
+                INVALID_INPUT,
+                INTERNAL_FAILURE
             };
 
             class ServiceException : public std::exception {

@@ -21,6 +21,8 @@ add_library(ServerLib SHARED
 
     "exceptions/Exceptions.cc"
 
+    "datastructures/UserItem.cc"
+
     $<TARGET_OBJECTS:GeneratedObjects>
     )
 
